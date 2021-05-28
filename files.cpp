@@ -1,8 +1,8 @@
 /*
  * Codigo C++ com exemplos para criaçao e manipulaçao de arquivos em C++.
- * 
- * Criado por: Prof. Jose J. Camata  
- * 
+ *
+ * Criado por: Prof. Jose J. Camata
+ *
  */
 
 #include <iostream>
@@ -72,9 +72,9 @@ void leArquivoTextoGeral()
         getline(arq, str);
         arq >> val;
         cout << str << '\n' << val << endl;
-        
+
         // ERRO: irá gerar lixo de memória, pois val irá armazenar todos os dígitos na sequência
-        //int intval; 
+        //int intval;
         //arq >> intval;
         // cout << str << '\n' << val << '\n' << intval << endl;
 
@@ -179,7 +179,7 @@ void carregaArquivoPorBlocos(int tamBloco)
         }
         high_resolution_clock::time_point fim = high_resolution_clock::now();
         cout << duration_cast<duration<double> >(fim - inicio).count() << " segundos" << endl;
-    }    
+    }
 
     arq.close();
     delete [] dados;
@@ -219,7 +219,7 @@ void carregaRegistro(int indice)
         cout << x << endl;
         high_resolution_clock::time_point fim = high_resolution_clock::now();
         cout << duration_cast<duration<double> >(fim - inicio).count() << " segundos" << endl;
-    }    
+    }
 
     arq.close();
 }
@@ -230,41 +230,41 @@ int main()
     // Não há distinção entre o inteiro e o float, são todos transformados em caracteres
     escreveArquivoTexto();
 
-    fstream arq("arqTexto.txt");
-    cout << "Tamanho do arquivo texto: " << tamanhoArquivo(arq) << endl;
-    // arq.close();
+  //  fstream arq("arqTexto.txt");
+  //  cout << "Tamanho do arquivo texto: " << tamanhoArquivo(arq) << endl;
+//    arq.close();
 
     // EXEMPLO 2: Leitura de um arquivo texto utilizando getline
     // A cada linha, imprimimos o índice da linha e o valor de EOF.
-    //leArquivoTextoString();
+  //  leArquivoTextoString();
 
     // EXEMPLO 3: Tentativa de leitura de um arquivo texto utilizando os tipos de dados originais
-    // leArquivoTextoGeral();
+    //leArquivoTextoGeral();
 
     // EXEMPLO 4: Criação de um arquivo binário
-     //escreveArquivoBinario();
+    //escreveArquivoBinario();
 
     // EXEMPLO 5: Adição de novas informações a um arquivo previamente criado
     // ERRO: apenas abrir o arquivo já apaga o seu conteúdo
-     //fstream arq("arqTexto.txt", ios::out);
-     //arq.seekp(2);
+   // fstream arq("arqTexto.txt", ios::out);
+   // arq.seekp(2);
 
-    //fstream arq("arqTexto.txt", ios::app);
-    // fstream arq("arq.bin", ios::app);
-     //adicionaInfoArquivo(arq);
-     //cout << "Tamanho do arquivo texto: " << tamanhoArquivo(arq) << endl;
-     //arq.close();
+     // fstream arq("arqTexto.txt", ios::app);
+      fstream arq("arq.bin", ios::app);
+    adicionaInfoArquivo(arq);
+    cout << "Tamanho do arquivo texto: " << tamanhoArquivo(arq) << endl;
+    arq.close();
 
     // EXEMPLO 6: Leitura de um arquivo binário
-     //leArquivoBinario();
+    //leArquivoBinario();
 
     // EXEMPLO 7: Acesso direto a um arquivo binário usando seekg
     //geraArquivoBinario();
     //carregaRegistro(100000);
 
     // EXEMPLO 8: Leitura de um arquivo grande usando um buffer na memória principal
-     //geraCSV();
-     //carregaArquivoPorBlocos(5000000);
+    geraCSV();
+    carregaArquivoPorBlocos(5000000);
 
     return 0;
 }
